@@ -1,0 +1,22 @@
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.integrate import odeint
+
+
+def pend(u, t):
+    y, z = u
+    dudt = [z, (-2 * z - 5 * y + 5) / 10]
+    return dudt
+
+
+u0 = [1, 2]
+t = np.linspace(0, 50, 10000)
+
+sol = odeint(pend, u0, t)
+
+plt.plot(t, sol[:, 0], 'b', label='y(t)')
+# plt.plot(t, sol[:, 1], 'g', label='z(t)')
+plt.xlabel('t')
+plt.ylabel('y(t)')
+plt.grid()
+plt.show()
