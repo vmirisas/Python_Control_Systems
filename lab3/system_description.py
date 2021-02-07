@@ -13,7 +13,6 @@ u0 = [1, 2]
 t = np.linspace(0, 50, 10000)
 
 sol = odeint(pend, u0, t)
-
 plt.plot(t, sol[:, 0], 'b', label='y(t)')
 plt.xlabel('t')
 plt.ylabel('y(t)')
