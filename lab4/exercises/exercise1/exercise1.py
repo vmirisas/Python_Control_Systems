@@ -16,14 +16,8 @@ g2 = (2 * s - 3) / (6 * s ** 3 - 8 * s + 4)
 t = np.linspace(0, 200, 10000)
 
 t1, imp1 = co.impulse_response(g1, t)
-
-"""peaks1, _ = find_peaks(imp1)
-print(peaks1[96])"""
-
 t2, imp2 = co.impulse_response(g2, t)
-
 t3, stp1 = co.step_response(g1, t)
-
 t4, stp2 = co.step_response(g2, t)
 
 print(f"g1 impulse : time= {peak_amplitude(imp1)[0]}, amplitude max= {peak_amplitude(imp1)[1]}")

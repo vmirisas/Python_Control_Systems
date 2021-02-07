@@ -40,7 +40,6 @@ print(f"poles\zeros g12p= {g12p_map}")
 
 plt.figure(5)
 g12f_map = co.pzmap(g12f, plot=True)
-print(g12f_map)
 print(f"poles\zeros g12f= {g12f_map}")
 
 plt.show()
