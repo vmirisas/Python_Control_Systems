@@ -9,23 +9,24 @@ def pend(u, t):
     return dudt
 
 
-# u0 = [1, 2]
 u0 = [0, 0]
 
-t = np.linspace(0, 40, 1000)
+t = np.linspace(0, 100, 1000)
 
 sol = odeint(pend, u0, t)
 plt.figure(1)
-plt.plot(t, sol[:, 0], 'b', label='y(t)')
-plt.plot(t, sol[:, 1], 'r', label='y(t)')
+
+plt.plot(t, sol[:, 0], 'b')
 
 plt.xlabel('t')
-
+plt.ylabel('y(t)')
 plt.xticks(np.arange(0, 101, 20))
+
+
 plt.xlim(0, 60)
 plt.grid()
 
 plt.figure(2)
-plt.plot(sol[:, 0], sol[:, 1], 'r', label='y(t)')
+plt.plot(sol[:, 0], sol[:, 1])
 plt.grid()
 plt.show()

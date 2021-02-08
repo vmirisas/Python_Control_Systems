@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def peak_amplitude(signal):
+def peak_amplitude(signal, t):
     index_max = list(signal).index(max(signal))
-    peak = [t1[index_max], signal[index_max]]
+    peak = [t[index_max], signal[index_max]]
     return peak
 
 
@@ -20,20 +20,20 @@ t2, imp2 = co.impulse_response(g2, t)
 t3, stp1 = co.step_response(g1, t)
 t4, stp2 = co.step_response(g2, t)
 
-print(f"g1 impulse : time= {peak_amplitude(imp1)[0]}, amplitude max= {peak_amplitude(imp1)[1]}")
-print(f"g2 impulse : time= {peak_amplitude(imp2)[0]}, amplitude max= {peak_amplitude(imp2)[1]}")
-print(f"g1 step : time= {peak_amplitude(stp1)[0]}, amplitude max= {peak_amplitude(stp1)[1]}")
-print(f"g2 step : time= {peak_amplitude(stp2)[0]}, amplitude max= {peak_amplitude(stp2)[1]}")
+print(f"g1 impulse : time= {peak_amplitude(imp1,t1)[0]}, amplitude max= {peak_amplitude(imp1,t1)[1]}")
+print(f"g2 impulse : time= {peak_amplitude(imp2,t2)[0]}, amplitude max= {peak_amplitude(imp2,t2)[1]}")
+print(f"g1 step : time= {peak_amplitude(stp1,t3)[0]}, amplitude max= {peak_amplitude(stp1,t3)[1]}")
+print(f"g2 step : time= {peak_amplitude(stp2,t4)[0]}, amplitude max= {peak_amplitude(stp2,t4)[1]}")
 
 fig, axs = plt.subplots(2, 2, figsize=(10, 7))
 axs[0, 0].plot(t1, imp1)
-axs[0, 0].plot(peak_amplitude(imp1)[0], peak_amplitude(imp1)[1], "o")
+axs[0, 0].plot(peak_amplitude(imp1,t1)[0], peak_amplitude(imp1,t1)[1], "o")
 axs[0, 1].plot(t2, imp2)
-axs[0, 1].plot(peak_amplitude(imp2)[0], peak_amplitude(imp2)[1], "o")
+axs[0, 1].plot(peak_amplitude(imp2,t2)[0], peak_amplitude(imp2,t2)[1], "o")
 axs[1, 0].plot(t3, stp1)
-axs[1, 0].plot(peak_amplitude(stp1)[0], peak_amplitude(stp1)[1], "o")
+axs[1, 0].plot(peak_amplitude(stp1,t3)[0], peak_amplitude(stp1,t3)[1], "o")
 axs[1, 1].plot(t4, stp2)
-axs[1, 1].plot(peak_amplitude(stp2)[0], peak_amplitude(stp2)[1], "o")
+axs[1, 1].plot(peak_amplitude(stp2,t4)[0], peak_amplitude(stp2,t4)[1], "o")
 
 axs[0, 0].set_xlim([0, 30])
 axs[1, 0].set_xlim([0, 30])

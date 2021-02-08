@@ -3,14 +3,24 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 s = co.tf('s')
-t = np.linspace(0, 1, 100)
-g1 = (s + 1) / (s ** 2 + 3 * s + 2)
+t = np.linspace(0, 10, 1000)
+g1 = (s + 1) / ((s ** 2) - (3 * s) + 2)
 g1_poles = co.pole(g1)
 print(g1_poles)
 
-h1 = co.feedback(g1, 2)
-h2 = co.feedback(g1, 3)
-h3 = co.feedback(g1, 5)
+h1 = co.feedback(g1, 2, -1)
+h2 = co.feedback(g1, 3, -1)
+h3 = co.feedback(g1, 5, -1)
+
+print("--------")
+for elem in co.pole(h1):
+    print(f'{elem: .2f}')
+print("--------")
+for elem in co.pole(h2):
+    print(f'{elem: .2f}')
+print("--------")
+for elem in co.pole(h3):
+    print(f'{elem: .2f}')
 
 t1, imp1 = co.impulse_response(h1, t)
 t2, imp2 = co.impulse_response(h2, t)

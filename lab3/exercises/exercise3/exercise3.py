@@ -10,21 +10,22 @@ def pend(u, t):
 
 u0 = [0, 0]
 
-t = np.linspace(0, 100, 1000)
+t = np.linspace(0, 100, 10000)
 
 sol = odeint(pend, u0, t)
 
-plt.plot(t, sol[:, 0], 'b', label='y(t)')
-
-
+plt.figure(1)
+plt.plot(t, sol[:, 0], 'b')
 plt.xlabel('t')
-
+plt.ylabel('y')
 plt.xticks(np.arange(0, 101, 20))
 plt.xlim(0, 100)
 plt.grid()
+print(sol[t>80,1])
+plt.figure(2)
+plt.xlabel("y(t)")
+plt.ylabel("y'(t)")
+plt.plot(sol[t>50, 0], sol[t>50, 1])
+plt.grid()
+
 plt.show()
-
-# system balance
-akr = sol[sol[:, 1] == 0, 0]
-
-print(akr)
