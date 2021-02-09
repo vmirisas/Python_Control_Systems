@@ -8,6 +8,12 @@ def peak_amplitude(signal, t):
     peak = [t[index_max], signal[index_max]]
     return peak
 
+def step_info(t, yout):
+    print(f"Max Amp: {max(yout)}")
+    print("OS: %f%s" % ((yout.max() / yout[-1] - 1) * 100, '%'))
+    print("Tr: %fs" % (t[next(i for i in range(0, len(yout) - 1) if yout[i] > yout[-1] * .90)] - t[0]))
+    print("Ts: %fs" % (t[next(len(yout) - i for i in range(2, len(yout) - 1) if abs(yout[-i] / yout[-1]) > 1.02)] - t[0]))
+
 
 s = co.tf('s')
 g1 = 6 / (3 * s ** 2 + 2 * s + 6)
@@ -24,6 +30,9 @@ print(f"g1 impulse : time= {peak_amplitude(imp1,t1)[0]}, amplitude max= {peak_am
 print(f"g2 impulse : time= {peak_amplitude(imp2,t2)[0]}, amplitude max= {peak_amplitude(imp2,t2)[1]}")
 print(f"g1 step : time= {peak_amplitude(stp1,t3)[0]}, amplitude max= {peak_amplitude(stp1,t3)[1]}")
 print(f"g2 step : time= {peak_amplitude(stp2,t4)[0]}, amplitude max= {peak_amplitude(stp2,t4)[1]}")
+
+print(step_info(t3, stp1))
+print(step_info(t1, imp1))
 
 fig, axs = plt.subplots(2, 2, figsize=(10, 7))
 axs[0, 0].plot(t1, imp1)
