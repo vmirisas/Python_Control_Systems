@@ -6,9 +6,9 @@ import numpy as np
 def os_cosines(x):
     log2 = (np.log(x)) ** 2
     pi2 = (np.pi) ** 2
-    enumrator = log2 + np.sqrt((1 + 4 * pi2) * log2)
-    denominator = 2 * pi2
-    return enumrator / denominator
+    numrator = np.log(x)
+    denominator = np.sqrt(log2+pi2)
+    return numrator / denominator
 
 def plot_line(slope):
     axes = plt.gca()

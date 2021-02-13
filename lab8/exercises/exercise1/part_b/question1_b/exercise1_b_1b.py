@@ -29,7 +29,7 @@ h2 = 1 / (s - 1)
 
 # b)
 k = 150
-gf = co.feedback(k * lead_comp(-60, -10) * g, h2, -1)  # υπολογίζω τους πόλου και τα μηδενικά του κλειστού συστήματος με Κ = 120 και feedback=h2
+gf = co.feedback(k * lead_comp(-60, -10) * g, h2, -1)  # υπολογίζω τους πόλου και τα μηδενικά του κλειστού συστήματος με Κ = 150 και feedback=h2
 poles = co.pole(gf)
 zeros = co.zero(gf)
 print(poles, zeros)
