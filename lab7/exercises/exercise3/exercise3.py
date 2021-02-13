@@ -10,10 +10,10 @@ def os_cosines(x):
     denominator = 2 * pi2
     return enumrator / denominator
 
-def plot_line(slope, intercept):
+def plot_line(slope):
     axes = plt.gca()
     x_vals = np.array(axes.get_xlim())
-    y_vals = intercept+slope*x_vals
+    y_vals = slope*x_vals
     plt.plot(x_vals,y_vals, 'r--')
 
 
@@ -34,8 +34,8 @@ slope1 = np.tan(np.arccos(os_cosines(0.2)))
 plt.axvline(-4/TS, color='r', linestyle='--')
 
 
-plot_line(slope1, 0)
-plot_line(-slope1, 0)
+plot_line(slope1)
+plot_line(-slope1)
 
 plt.xlim([-1.5, 0.5])
 plt.ylim([-1.3,1.3])
