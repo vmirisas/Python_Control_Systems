@@ -51,11 +51,6 @@ print(det(x))
 ar = np.array([[-1.2, 1.2],[-4.6, -3]])
 print(abs(x))
 
-# C = A\B
-B = np.array([[2],[4]])
-b = np.array([[4],[4]])
-x = np.linalg.lstsq(B, b,rcond=None)
-print(x)
 
 # amax(A), amin(A), sum(A), prod(A) (along axis=0 or 1)
 ar1 = np.array([[1,5,9,6],[5,8,2,8],[7,3,6,4]])
