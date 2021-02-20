@@ -6,8 +6,8 @@ period = 5
 frequency = 1 / period
 amplitude = 3
 time = np.linspace(0, 15, 150)
-signal_square = amplitude * sg.sawtooth(2 * np.pi * frequency * time)
-plt.plot(time, signal_square)
+signal_saw = amplitude * sg.sawtooth(2 * np.pi * frequency * time)
+plt.plot(time, signal_saw)
 plt.xlabel('Time (s)')
 plt.ylabel('Amplitude')
 plt.suptitle('Sawtooth Wave')

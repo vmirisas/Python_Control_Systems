@@ -1,11 +1,11 @@
 import numpy as np
 from numpy import random
 
-M = 10
-print(M)
+m = 7
+print(m)
 
 array = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-
+print(array[1,1])
 # ATTRIBUTES OF AN ARRAY/MATRIX
 print("attributes of an array")
 print(f"the array is:\n {array}")

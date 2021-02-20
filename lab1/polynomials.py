@@ -1,15 +1,16 @@
 import numpy as np
 from numpy.polynomial import Polynomial as P
 
-p = P([2, 0, 5, -6])
-b = P([-1, 1])
-print(p)
+p1 = P([2, -1, 5, -6])
+p2 = P([2, 0, 1, 0])
+print(p1)
+print(p2)
 
 # conv(p,q)
-conv = p * b
+conv = p1 * p2
 print(conv)  # 1 way
-print(f"numpy: {np.convolve(p, b)}")  # 2 way + domain, window
-print(f"polymul: {np.polymul(p, b)}")
+print(f"numpy: {np.convolve(p1, p2)}")  # 2 way + domain, window
+print(f"polymul: {np.polymul(p1, p2)}")
 
 # [q,r] = deconv(a,b)
 P = np.array([2, 0, 5, -6])
