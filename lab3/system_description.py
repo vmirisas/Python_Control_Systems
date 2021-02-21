@@ -20,9 +20,8 @@ plt.ylabel('y(t)')
 plt.grid()
 
 plt.figure(2)
-plt.plot(t, sol[:, 1], 'b', label='y(t)') # plot z(t)=y'(t)
+plt.plot(t, sol[:, 1], 'b', label="y'(t)") # plot z(t)=y'(t)
 plt.xlabel('t')
-plt.ylabel('y(t)')
-
+plt.ylabel("y'(t)")
 plt.grid()
 plt.show()

@@ -3,7 +3,7 @@ import numpy as np
 from scipy.integrate import odeint
 
 
-def pend(u, t, k):
+def system(u, t, k):
     y, z = u
     dudt = [z, (-2 * z - k * y) / 10]
     return dudt
@@ -14,9 +14,9 @@ u0 = [0, 1]
 t = np.linspace(0, 50, 10000)
 
 k1 = 5
-sol1 = odeint(pend, u0, t, args=(k1,))
+sol1 = odeint(system, u0, t, args=(k1,))
 k2 = 15
-sol2 = odeint(pend, u0, t, args=(k2,))
+sol2 = odeint(system, u0, t, args=(k2,))
 
 fig, (axs1, axs2) = plt.subplots(2, 1)
 axs1.plot(t, sol1[:, 0], 'b', label='y(t)')
