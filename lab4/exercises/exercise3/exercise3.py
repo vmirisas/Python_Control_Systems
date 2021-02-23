@@ -1,7 +1,8 @@
 import control as co
 import matplotlib.pyplot as plt
 import numpy as np
-from control.timeresp import step_info
+
+from functions.my_functions import step_info
 
 
 def max_amplitude(signal, time):
@@ -27,7 +28,6 @@ m1 = 10
 m2 = 80
 t = np.linspace(0, 1000, 10001)
 
-
 s = co.tf('s')
 g1 = 1 / (m1 * s ** 2 + b * s + k)
 g2 = 1 / (m2 * s ** 2 + b * s + k)
@@ -39,8 +39,7 @@ t2, stp1 = co.step_response(g1, t)
 t3, imp2 = co.impulse_response(g2, t)
 t4, stp2 = co.step_response(g2, t)
 
-
-#S = co.step_info(stp1, t, SettlingTimeThreshold=0.01, RiseTimeLimits=(0.1, 0.9))
+# S = co.step_info(stp1, t, SettlingTimeThreshold=0.01, RiseTimeLimits=(0.1, 0.9))
 
 print("g1 impulse info")
 signal_info(imp1, t1)
@@ -50,6 +49,12 @@ print("g2 impulse info")
 signal_info(imp2, t3)
 print("g2 step info")
 signal_info(stp2, t4)
+
+print("System 1 (m=10) step response info:")
+step_info(t2, stp1)
+print("-" * 50)
+print("System 2 (m=80) step response info:")
+step_info(t4, stp2)
 
 fig, axs = plt.subplots(2, 2, figsize=(7, 7))
 plt.subplots_adjust(hspace=0.5, wspace=0.5)

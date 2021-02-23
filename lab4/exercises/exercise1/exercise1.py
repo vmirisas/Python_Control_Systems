@@ -34,7 +34,10 @@ print(f"g2 step : time= {peak_amplitude(stp2,t4)[0]}, amplitude max= {peak_ampli
 print(step_info(t3, stp1))
 print(step_info(t1, imp1))
 
+# ορισμός πλέγματος γραφικών παραστάσεων
 fig, axs = plt.subplots(2, 2, figsize=(10, 7))
+
+# γραφικές παραστάσεις αποκρίσεων και μεγίστων χρόνων
 axs[0, 0].plot(t1, imp1)
 axs[0, 0].plot(peak_amplitude(imp1,t1)[0], peak_amplitude(imp1,t1)[1], "o")
 axs[0, 1].plot(t2, imp2)
@@ -44,14 +47,17 @@ axs[1, 0].plot(peak_amplitude(stp1,t3)[0], peak_amplitude(stp1,t3)[1], "o")
 axs[1, 1].plot(t4, stp2)
 axs[1, 1].plot(peak_amplitude(stp2,t4)[0], peak_amplitude(stp2,t4)[1], "o")
 
+# Όρια άξονα x γραφικής παράστασης
 axs[0, 0].set_xlim([0, 30])
 axs[1, 0].set_xlim([0, 30])
 
+# πλέγματα
 axs[0, 0].grid()
 axs[0, 1].grid()
 axs[1, 0].grid()
 axs[1, 1].grid()
 
+# Τίτλοι
 axs[0, 0].set_title("Impulse(g1)")
 axs[0, 1].set_title("Impulse(g2)")
 axs[1, 0].set_title("Step(g1)")

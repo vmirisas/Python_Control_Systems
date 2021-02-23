@@ -29,6 +29,11 @@ l1 = len(np.linspace(0, 4, 400, endpoint=False))
 l2 = len(np.linspace(4, 8, 400, endpoint=False))
 l3 = len(np.linspace(8, 10, 200))
 sq = np.append(np.append(np.zeros(l1), np.ones(l2)), np.zeros(l3))
+
+plt.plot(tsq,sq)
+plt.grid()
+plt.show()
+
 yout, T, xout = matlab.lsim(g1, sq, tsq)
 
 print(f"g1 impulse : time= {max_amplitude(imp, t1)[0]}, amplitude max= {max_amplitude(imp, t1)[1]}")

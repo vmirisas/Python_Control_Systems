@@ -1,8 +1,7 @@
-import control.matlab as cm
 import control as co
+import control.matlab as cm
 import matplotlib.pyplot as plt
 import numpy as np
-from control.timeresp import step_info
 
 
 def max_amplitude(signal, time):
@@ -28,7 +27,6 @@ m1 = 10
 m2 = 80
 t = np.linspace(0, 1000, 10001)
 
-
 s = co.tf('s')
 g1 = 1 / (m1 * s ** 2 + b * s + k)
 g2 = 1 / (m2 * s ** 2 + b * s + k)
@@ -40,8 +38,7 @@ stp1, t2 = cm.step(g1, t)
 imp2, t3 = cm.impulse(g2, t)
 stp2, t4 = cm.step(g2, t)
 
-
-#sample = co.step_info(stp1, t, SettlingTimeThreshold=0.01, RiseTimeLimits=(0.1, 0.9))
+# sample = co.step_info(stp1, t, SettlingTimeThreshold=0.01, RiseTimeLimits=(0.1, 0.9))
 
 print("g1 impulse info")
 signal_info(imp1, t1)
