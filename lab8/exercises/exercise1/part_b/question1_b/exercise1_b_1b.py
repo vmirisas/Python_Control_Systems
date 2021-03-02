@@ -32,7 +32,8 @@ k = 150
 gf = co.feedback(k * lead_comp(-60, -10) * g, h2, -1)  # υπολογίζω τους πόλου και τα μηδενικά του κλειστού συστήματος με Κ = 150 και feedback=h2
 poles = co.pole(gf)
 zeros = co.zero(gf)
-print(poles, zeros)
+print(f"poles: {poles}")
+print(f"zeros: {zeros}")
 
 plt.figure(1)
 co.root_locus(lead_comp(-60, -10) * g * h2, grid=False)  # σχεδιάζω την γραφική παράστασή μου με lead_compensator
@@ -43,7 +44,9 @@ plt.plot(zeros.real, zeros.imag, 'ro')
 plt.figure(2)
 t = np.linspace(0, 3, 1000)
 t1, yout = co.step_response(gf, t)
-
+plt.xlabel('Time')
+plt.ylabel('Amplitude')
+plt.grid()
 step_info(t1, yout)
 plt.plot(t1, yout)
 

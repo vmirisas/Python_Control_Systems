@@ -1,8 +1,8 @@
-import matplotlib.pyplot as plt
 import control as co
-from functions.my_functions import step_info
+import matplotlib.pyplot as plt
 import numpy as np
 
+from functions.my_functions import step_info
 
 """ Συνάρτηση κατασκευής lead compensator
     input(θέσεις ενός πραγματικού μηδενικού και ενός πραγματικού πόλου)
@@ -26,23 +26,21 @@ h2 = 1/(s-1)
 
 #b)
 k = 60
-gf = co.feedback(k*pd_comp(-4.4)*g, h2, -1) # υπολογίζω τους πόλου και τα μηδενικά του κλειστού συστήματος με Κ = 120 και feedback=h2
+gf = co.feedback(k*pd_comp(-4.4)*g, h2, -1) # υπολογίζω τους πόλου και τα μηδενικά του κλειστού συστήματος με Κ = 60 και feedback=h2
 poles = co.pole(gf)
 zeros = co.zero(gf)
-print(poles,zeros)
+print(f"poles: {poles}")
+print(f"zeros: {zeros}")
 
 plt.figure(1)
-co.root_locus(pd_comp(-4.4)*g*h2, grid=False) # σχεδιάζω την γραφική παράστασή μου με lead_compensator
+co.root_locus(pd_comp(-4.4)*g*h2, grid=False) # σχεδιάζω την γραφική παράστασή μου με pd_compensator
 plot_ts(2)
 plt.xlim(-15,5)
 
 plt.plot(poles.real, poles.imag, 'rx')
-#plt.plot(zeros.real, zeros.imag, 'ro')
 
 t = np.linspace(0,3,1000)
 t1, yout = co.step_response(gf, t)
-
 step_info(t1, yout)
-
 
 plt.show()

@@ -26,18 +26,18 @@ h2 = 1/(s-1)
 
 #b)
 k = 4
-gf = co.feedback(k*pid_comp(-0.5, -0.5)*g, h2, -1) # υπολογίζω τους πόλου και τα μηδενικά του κλειστού συστήματος με Κ = 120 και feedback=h2
+gf = co.feedback(k*pid_comp(-0.5, -0.5)*g, h2, -1) # υπολογίζω τους πόλου και τα μηδενικά του κλειστού συστήματος με Κ = 4 και feedback=h2
 poles = co.pole(gf)
 zeros = co.zero(gf)
-print(poles,zeros)
+print(f"poles: {poles}")
+print(f"zeros: {zeros}")
 
 plt.figure(1)
-co.root_locus(pid_comp(-0.5, -0.5)*g*h2, grid=False) # σχεδιάζω την γραφική παράστασή μου με lead_compensator
+co.root_locus(pid_comp(-0.5, -0.5)*g*h2, grid=False) # σχεδιάζω την γραφική παράστασή μου με pid_compensator
 plot_ts(2)
 plt.xlim(-10,3)
 plt.ylim(-6,6)
 plt.plot(poles.real, poles.imag, 'rx')
-#plt.plot(zeros.real, zeros.imag, 'ro')
 
 t = np.linspace(0,3,1000)
 t1, yout = co.step_response(gf, t)

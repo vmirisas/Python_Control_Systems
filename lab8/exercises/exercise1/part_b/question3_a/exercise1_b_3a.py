@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
     με αυτά κατασκευάζει τα πολυώνυμα μετά την προσθήκη των ο,x 
     returns (C(s) με αυτά κατασκευάζει) 
 """
+
+
 def pd_comp(szero):
     cz1 = 1 + (s / (-szero))
 
@@ -24,17 +26,16 @@ h2 = 1 / (s - 1)
 
 # a)
 k = 36
-gf = co.feedback(k * pd_comp(-4.4) * g, h2, -1)  # υπολογίζω τους πόλου και τα μηδενικά του κλειστού συστήματος με Κ = 120 και feedback=h2
+gf = co.feedback(k * pd_comp(-4.4) * g, h2, -1)  # υπολογίζω τους πόλου και τα μηδενικά του κλειστού συστήματος με Κ = 36 και feedback=h2
 poles = co.pole(gf)
 zeros = co.zero(gf)
-print(poles, zeros)
+print(f"poles: {poles}")
+print(f"zeros: {zeros}")
 
 plt.figure(1)
-co.root_locus(pd_comp(-4.4) * g * h2, grid=False)  # σχεδιάζω την γραφική παράστασή μου με lead_compensator
+co.root_locus(pd_comp(-4.4) * g * h2, grid=False)  # σχεδιάζω την γραφική παράστασή μου με pd_compensator
 plt.xlim(-15, 5)
-#plt.ylim(-6, 6)
-plt.plot(poles.real, poles.imag, 'rx')
-# plt.plot(zeros.real, zeros.imag, 'ro')
 
+plt.plot(poles.real, poles.imag, 'rx')
 
 plt.show()

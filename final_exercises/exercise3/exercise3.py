@@ -1,8 +1,9 @@
 import control as co
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy import signal as sg
 from control.matlab import lsim
+from scipy import signal as sg
+
 from functions.my_functions import step_info
 
 
@@ -10,6 +11,10 @@ def find_nearest(array, value):
     array = np.asarray(array)
     idx = (np.abs(array - value)).argmin()
     return array[idx]
+
+
+def plot_ts(TS):
+    plt.axvline(-4 / TS, color='r', linestyle='--')
 
 
 s = co.tf('s')
@@ -80,10 +85,6 @@ def add_zero(szero):
     return cz
 
 
-def plot_ts(TS):
-    plt.axvline(-4 / TS, color='r', linestyle='--')
-
-
 k = 1200
 
 plt.figure(6)
@@ -131,21 +132,19 @@ plot_line(-slope1)
 
 tstep2, ystp2 = co.step_response(gf2, t)
 step_info(tstep2, ystp2)
-plt.xlim(-100,1)
+plt.xlim(-100, 1)
 
-
-#9)
+# 9)
 period = 0.1
-freq = 1/period
+freq = 1 / period
 amp = 1
-time = np.linspace(0,1,1000)
-signal_sqr = amp * sg.square(2 * np.pi *freq * time)
+time = np.linspace(0, 1, 1000)
+signal_sqr = amp * sg.square(2 * np.pi * freq * time)
 plt.figure(8)
 plt.plot(time, signal_sqr)
-closedsys,tclosed , xout= lsim(gf2, signal_sqr, time)
+closedsys, tclosed, xout = lsim(gf2, signal_sqr, time)
 
 plt.figure(9)
 plt.plot(tclosed, closedsys)
-
 
 plt.show()
