@@ -72,5 +72,6 @@ print(f"sum_vertical = {sum_vertical}")
 print(f"prod_horizontal = {prod_horizontal}")
 print(f"prod_vertical = {prod_vertical}")
 
-print(min(x))
-print(max(x))
+print(np.min(x))
+print(np.max(x))
+
