@@ -1,34 +1,22 @@
 import numpy as np
 from numpy.polynomial import Polynomial as P
 
-p1 = P([2, -1, 5, -6])
-p2 = P([2, 0, 1, 0])
-print(p1)
-print(p2)
+poly1 = P([2, -1, 5, -6])
+poly2 = P([2, 0, 1, 0])
+print(poly1)
+print(poly2)
 
-# conv(p,q)
-conv = p1 * p2
-print(conv)  # 1 way
-print(f"numpy: {np.convolve(p1, p2)}")  # 2 way + domain, window
-print(f"polymul: {np.polymul(p1, p2)}")
+p1 = np.array([2, -1, 5, -6])
+p2 = np.array([2, 0, 1, 0])
+print(f"polynomial add p1 + p2: {np.polyadd(p1, p2)}")
+print(f"polynomial multiply p1 * p2: {np.polymul(p1, p2)}")
+print(f"polynomial divide p1 / p2: {np.polydiv(p1, p2)}")
 
-# [q,r] = deconv(a,b)
-P = np.array([2, 0, 5, -6])
-B = np.array([-1, 1])
-print(f"deconv :{np.polydiv(P, B)}")
-# working with arrays
-print(f"polymul: {np.polymul(P, B)}")
-print(f"numpy: {np.convolve(P, B)}")
+rootsP1 = np.roots(p1)
+print(f"roots of p1: {rootsP1}")
 
-# r = roots(p)
-rootsP = np.roots(P)
-print(f"rootsP :{rootsP}")
+poly = np.poly(rootsP1)
+print(f"polynomial creation with roots of 'rootsP1': {poly}")
 
-# p = polyder(r)
-polyP = np.poly(rootsP)
-print(polyP)
-
-# polyder(p, m=1)
-# m: Order of differentiation (default: 1)
-polyderP = np.polyder(P)
-print(polyderP)
+polyD = np.polyder(p1)
+print(f"derivative of the polynomial: {polyD}")
