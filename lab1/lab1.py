@@ -72,7 +72,7 @@ print(rng1)
 rng2 = rng.random((3, 3))
 print(rng2)
 
-rng3 = random.randint(99,100, size=(3, 5))
+rng3 = random.randint(50, 100, size=(3, 5))
 print(rng3)
 
 # zeros
